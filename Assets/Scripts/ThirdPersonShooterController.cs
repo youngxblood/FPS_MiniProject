@@ -39,6 +39,7 @@ public class ThirdPersonShooterController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, aimColliderLayerMask))
         {
+            debugTransform.position = raycastHit.point;
             mouseWorldPosition = raycastHit.point;
         }
 
@@ -46,6 +47,7 @@ public class ThirdPersonShooterController : MonoBehaviour
         {
             aimVirtualCamera.gameObject.SetActive(true); // Enables aim camera
             thirdPersonController.SetCameraSpeed(aimSensitivity); // Sets camera speed
+            thirdPersonController.SetRotationOnMove(false); // Stops the character controller from handling rotation when aiming
 
             Vector3 worldAimTarget = mouseWorldPosition;
             worldAimTarget.y = transform.position.y;
@@ -58,6 +60,7 @@ public class ThirdPersonShooterController : MonoBehaviour
         {
             aimVirtualCamera.gameObject.SetActive(false);
             thirdPersonController.SetCameraSpeed(normalSensitivity);
+            thirdPersonController.SetRotationOnMove(true);
         }
     }
 }
