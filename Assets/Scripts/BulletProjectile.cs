@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletProjectile : MonoBehaviour
 {
     private Rigidbody bulltRigidbody;
+    [SerializeField] private float speed = 10f;
 
     private void Awake()
     {
@@ -13,7 +14,12 @@ public class BulletProjectile : MonoBehaviour
 
     private void Start()
     {
-        float speed = 10f;
-        bulltRigidbody.velocity = transform.forward * speed * Time.deltaTime;
+
+        bulltRigidbody.velocity = transform.forward * speed;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
     }
 }

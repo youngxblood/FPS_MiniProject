@@ -15,6 +15,8 @@ public class ThirdPersonShooterController : MonoBehaviour
     [SerializeField] private float aimTurnSpeed = 20f;
     [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
     [SerializeField] private Transform debugTransform;
+    [SerializeField] private Transform projectilePrefab;
+    [SerializeField] private Transform spawnBulletPosition;
 
     private ThirdPersonController thirdPersonController;
     private StarterAssetsInputs starterAssetsInputs;
@@ -61,6 +63,13 @@ public class ThirdPersonShooterController : MonoBehaviour
             aimVirtualCamera.gameObject.SetActive(false);
             thirdPersonController.SetCameraSpeed(normalSensitivity);
             thirdPersonController.SetRotationOnMove(true);
+        }
+
+        if (starterAssetsInputs.shoot)
+        {
+            Vector3 aimDirection = (mouseWorldPosition - spawnBulletPosition.position).normalized;
+            Instantiate(projectilePrefab, spawnBulletPosition.position, Quaternion.LookRotation(aimDirection, Vector3.up));
+            starterAssetsInputs.shoot = false;
         }
     }
 }
