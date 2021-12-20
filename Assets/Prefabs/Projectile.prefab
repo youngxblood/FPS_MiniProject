@@ -126,3 +126,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
+  hitVFX: {fileID: 8973768189114767593, guid: 725680ffdd4aed94a8f2e8f4eda67f73, type: 3}
+  missVFX: {fileID: 8267647640281275243, guid: 725680ffdd4aed94a8f2e8f4eda67f73, type: 3}

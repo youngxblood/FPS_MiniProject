@@ -8,6 +8,7 @@ public class BulletProjectile : MonoBehaviour
     [SerializeField] private float speed = 10f;
     [SerializeField] private Transform hitVFX;
     [SerializeField] private Transform missVFX;
+    // [SerializeField] private GameObject 
 
     private void Awake()
     {
